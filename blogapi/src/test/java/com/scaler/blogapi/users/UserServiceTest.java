@@ -5,24 +5,29 @@ import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 public class UserServiceTest {
 
-    @Autowired private UserRepository userRepository;
-     private UserService userService;
+    @Autowired
+    private UserRepository userRepository;
+    private UserService userService;
 
-     private UserService getUserService(){
-         if(userService == null){
-             userService = new UserService(userRepository, new ModelMapper());
-         }
-         return userService;
-     }
+    private UserService getUserService() {
+        if (userService == null) {
+
+            var modelMapper = new ModelMapper();
+            var passwordEncoder = new BCryptPasswordEncoder();
+            userService = new UserService(userRepository, modelMapper, passwordEncoder);
+        }
+        return userService;
+    }
 
     @Test
-    public void testCreateUser(){
+    public void testCreateUser() {
         var newUserDTO = new CreateUserDTO();
         newUserDTO.setEmail("arnav@email.com");
         newUserDTO.setUsername("arnav123");
