@@ -1,5 +1,6 @@
 package com.scaler.blogapi.users;
 
+import com.scaler.blogapi.security.jwt.JWTService;
 import com.scaler.blogapi.users.dtos.CreateUserDTO;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
@@ -21,7 +22,8 @@ public class UserServiceTest {
 
             var modelMapper = new ModelMapper();
             var passwordEncoder = new BCryptPasswordEncoder();
-            userService = new UserService(userRepository, modelMapper, passwordEncoder);
+            var jwtService = new JWTService();
+            userService = new UserService(userRepository, modelMapper, passwordEncoder, jwtService);
         }
         return userService;
     }
