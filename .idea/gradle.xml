@@ -4,12 +4,48 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/blogapi" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/blogapi" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/java_basics1" />
         <option name="gradleHome" value="" />
         <option name="gradleJvm" value="19" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/java_basics1" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-taskmgr" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/spring-taskmgr" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/springbasics" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/springbasics" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/springtaskmgrv2/springtaskmgrv2" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/springtaskmgrv2/springtaskmgrv2" />
           </set>
         </option>
       </GradleProjectSettings>
