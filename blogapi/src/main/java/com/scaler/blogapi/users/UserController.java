@@ -26,10 +26,17 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<UserResponseDTO> loginUser(@RequestBody LoginUserDTO loginUserDTO) {
-        var savedUser = userService.loginUser(loginUserDTO);
-        return ResponseEntity
-                .ok(savedUser);
+    public ResponseEntity<UserResponseDTO> loginUser(
+            @RequestBody LoginUserDTO loginUserDTO,
+            @RequestParam(name="token",defaultValue = "jwt") String token
+    ) {
+//        if token == "jwt" (default) generate jwt , if token == "auth" generate auth token
+        var authType = UserService.AuthType.JWT;
+        if (token.equals("auth_token")) {
+            authType = UserService.AuthType.AUTH_TOKEN;
+        }
+        var savedUser = userService.loginUser(loginUserDTO, authType);
+        return ResponseEntity.ok(savedUser);
     }
 
     @ExceptionHandler(UserService.UserNotFoundException.class)

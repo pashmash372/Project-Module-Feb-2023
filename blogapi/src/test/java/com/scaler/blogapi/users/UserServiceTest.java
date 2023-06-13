@@ -1,21 +1,27 @@
 package com.scaler.blogapi.users;
 
+import com.scaler.blogapi.security.authtokens.AuthTokenService;
 import com.scaler.blogapi.security.jwt.JWTService;
 import com.scaler.blogapi.users.dtos.CreateUserDTO;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
+@ComponentScan(basePackages = {"com.scaler.blogapi.security"})
 public class UserServiceTest {
 
     @Autowired
     private UserRepository userRepository;
     private UserService userService;
+
+    @Autowired
+    private AuthTokenService authTokenService;
 
     private UserService getUserService() {
         if (userService == null) {
@@ -23,7 +29,7 @@ public class UserServiceTest {
             var modelMapper = new ModelMapper();
             var passwordEncoder = new BCryptPasswordEncoder();
             var jwtService = new JWTService();
-            userService = new UserService(userRepository, modelMapper, passwordEncoder, jwtService);
+            userService = new UserService(userRepository, modelMapper, passwordEncoder, jwtService, authTokenService);
         }
         return userService;
     }
